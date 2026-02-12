@@ -10,7 +10,7 @@
 
 ---
 
-## 📌 Project Motivation
+## Project Motivation
 
 在深度學習模型中，**Optimizer 的選擇與超參數設定**往往直接影響模型的收斂速度、穩定性與泛化能力。
 
@@ -32,7 +32,7 @@
 
 （內容整理自期末報告 :contentReference[oaicite:2]{index=2}）
 
-### 1️⃣ Gradient Descent (GD)
+### Gradient Descent (GD)
 
 目標：
 $\theta_{t+1} = \theta_t - \gamma \nabla J(\theta_t)]$
@@ -43,7 +43,7 @@ $\theta_{t+1} = \theta_t - \gamma \nabla J(\theta_t)]$
 
 ---
 
-### 2️⃣ SGD (Stochastic Gradient Descent)
+### SGD (Stochastic Gradient Descent)
 
 - Mini-batch 更新
 - 收斂速度提升
@@ -51,7 +51,7 @@ $\theta_{t+1} = \theta_t - \gamma \nabla J(\theta_t)]$
 
 ---
 
-### 3️⃣ Momentum
+### Momentum
 
 $v_t = \beta v_{t-1} + (1-\beta) g_t$
 
@@ -61,7 +61,7 @@ $v_t = \beta v_{t-1} + (1-\beta) g_t$
 
 ---
 
-### 4️⃣ Adagrad
+### Adagrad
 
 - 累積歷史梯度平方
 - 對稀疏特徵表現佳
@@ -69,7 +69,7 @@ $v_t = \beta v_{t-1} + (1-\beta) g_t$
 
 ---
 
-### 5️⃣ RMSProp
+### RMSProp
 
 - 使用指數移動平均
 - 解決 Adagrad 學習率過快衰減問題
@@ -77,7 +77,7 @@ $v_t = \beta v_{t-1} + (1-\beta) g_t$
 
 ---
 
-### 6️⃣ Adam (Adaptive Moment Estimation)
+### Adam (Adaptive Moment Estimation)
 
 結合：
 - Momentum（一階動量）
@@ -95,11 +95,11 @@ $v_t = \beta v_{t-1} + (1-\beta) g_t$
 
 ---
 
-## 📊 Part II — Empirical Comparison on OCT Binary Classification
+## Part II — Empirical Comparison on OCT Binary Classification
 
 （分析自論文 : "THE EMPIRICAL COMPARISON OF DEEP NEURAL NETWORK OPIMIZERS FOR BINARY CLASSIFICATION OF OCT IMAGES" ）
 
-### 📁 Dataset
+### Dataset
 
 - OCTID dataset
 - Normal vs AMD
@@ -109,7 +109,7 @@ $v_t = \beta v_{t-1} + (1-\beta) g_t$
 
 ---
 
-### 🧠 Models Compared
+### Models Compared
 
 - CNN
 - DNN
@@ -117,7 +117,7 @@ $v_t = \beta v_{t-1} + (1-\beta) g_t$
 
 ---
 
-### ⚙️ Optimizers Compared
+### Optimizers Compared
 
 - SGD
 - SGD + Momentum
@@ -132,21 +132,21 @@ Learning rates:
 
 ---
 
-## 🔍 Key Findings
+## Key Findings
 
-### ✅ Adam 表現最佳
+### Adam 表現最佳
 
 - 在多數 learning rate 下達到最低 train/test loss
 - 多數模型 training accuracy = 100%
 - 在 VGG16 中測試準確率最高可達 100%
 
-### ⚖️ RMSProp 次佳
+### RMSProp 次佳
 
 - 穩定
 - 部分情況測試準確率接近 Adam
 - 但初期 loss 較高
 
-### ❌ SGD 系列表現最差
+### SGD 系列表現最差
 
 - 收斂慢
 - 對 learning rate 高度敏感
@@ -154,15 +154,15 @@ Learning rates:
 
 ---
 
-## 🚀 My Research Extension
+## My Research Extension
 
 在完成理論推導與實證比較後，我提出以下進一步優化方向：
 
 ---
 
-# 🔬 1️⃣ Adam 變體優化
+# Adam 變體優化
 
-## ✅ AdamW（Decoupled Weight Decay）
+## AdamW（Decoupled Weight Decay）
 
 **問題**：
 Adam 原始實作中，L2 regularization 與 adaptive learning rate 耦合，可能影響泛化。
@@ -176,7 +176,7 @@ AdamW 將 weight decay 與梯度更新分離。
 
 ---
 
-## ✅ AMSGrad
+## AMSGrad
 
 **問題**：
 Adam 的二階動量估計可能導致不收斂。
@@ -190,7 +190,7 @@ $\hat{v}_t = \max(\hat{v}_{t-1}, v_t)$
 
 ---
 
-# 🤖 2️⃣ AutoML for Hyperparameter Optimization
+# AutoML for Hyperparameter Optimization
 
 論文中學習率為固定設定（0.001 / 0.0001 / 0.00001）。
 
@@ -210,7 +210,7 @@ $\hat{v}_t = \max(\hat{v}_{t-1}, v_t)$
 
 ---
 
-# 📈 Proposed Experimental Pipeline
+# Proposed Experimental Pipeline
 
 1. 使用 AdamW / AMSGrad 替代 Adam
 2. 導入 cosine annealing 或 warmup schedule
@@ -222,7 +222,7 @@ $\hat{v}_t = \max(\hat{v}_{t-1}, v_t)$
 
 ---
 
-# 🎯 Research Insight
+# Research Insight
 
 本專案不僅比較 optimizer。
 
@@ -241,7 +241,7 @@ $\hat{v}_t = \max(\hat{v}_{t-1}, v_t)$
 
 ---
 
-# 🧠 Future Research Direction
+# Future Research Direction
 
 - Optimizer + Hardware-aware training
 - Mixed precision + optimizer interaction
@@ -250,7 +250,7 @@ $\hat{v}_t = \max(\hat{v}_{t-1}, v_t)$
 
 ---
 
-# 📌 Conclusion
+# Conclusion
 
 本研究顯示：
 
